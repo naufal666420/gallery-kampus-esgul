@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Kampus</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <h2>Gallery Kampus</h2>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#footer">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Selamat Datang</h1>
+        <p>Website Gallery Kampus</p>
+        <a href="#gallery" class="btn">Lihat Gallery</a>
+    </section>
+
+    <section class="about" id="about">
+        <h2>Tentang Kampus</h2>
+        <p>Website ini menampilkan dokumentasi kegiatan kami ketika berada dikampus.</p>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <h2>Gallery Kampus</h2>
+        <div class="gallery-container">
+            <!-- Tambahkan gambar default web jika images/kampus.jpg tidak ada -->
+            <img src="foto 1.jpeg" alt="foto 1" onclick="openImage(this.src)">
+            <img src="foto 2.jpeg" alt="foto 2" onclick="openImage(this.src)">
+            <img src="foto 3.jpeg" alt="foto 3" onclick="openImage(this.src)">
+            
+        </div>
+    </section>
+
+    <!-- Popup Lightbox -->
+    <div id="popup">
+        <span onclick="closeImage()">&times;</span>
+        <img id="popup-img" alt="Popup Gambar">
+    </div>
+
+    <footer id="footer">
+        <h3>Muhamad Naufal S.Kom, M.Kom</h3>
+        <p>Email: info@gallerykampus.ac.id</p>
+        <p>&copy; 2026 Gallery Kampus</p>
+    </footer>
+
+    <script>
+        // Fungsi untuk membuka popup gambar
+        function openImage(src) {
+            const popup = document.getElementById("popup");
+            const popupImg = document.getElementById("popup-img");
+            popup.style.display = "flex";
+            popupImg.src = src;
+        }
+
+        // Fungsi untuk menutup popup gambar
+        function closeImage() {
+            document.getElementById("popup").style.display = "none";
+        }
+        
+        // Fungsi smooth scrolling untuk link internal (Navigasi & Tombol)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
